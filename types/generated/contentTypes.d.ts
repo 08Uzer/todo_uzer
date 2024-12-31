@@ -549,6 +549,7 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     email: Schema.Attribute.String;
     fname: Schema.Attribute.String;
     image: Schema.Attribute.Text;
+    isVerified: Schema.Attribute.Boolean;
     lname: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
