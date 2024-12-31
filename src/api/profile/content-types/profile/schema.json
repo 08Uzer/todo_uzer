@@ -58,6 +58,9 @@
     },
     "otp": {
       "type": "biginteger"
+    },
+    "isVerified": {
+      "type": "boolean"
     }
   }
 }
