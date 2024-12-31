@@ -556,6 +556,7 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
       'api::profile.profile'
     > &
       Schema.Attribute.Private;
+    otp: Schema.Attribute.BigInteger;
     password: Schema.Attribute.String;
     phone: Schema.Attribute.BigInteger;
     pincode: Schema.Attribute.BigInteger;
