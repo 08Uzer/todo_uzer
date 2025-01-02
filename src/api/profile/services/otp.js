@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 /**
  * Function to generate a random 6-digit OTP.
@@ -8,7 +8,6 @@ const nodemailer = require('nodemailer');
 const generateOTP = () => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
-
 
 /**
  * Function to generate the HTML email template with the OTP.
@@ -36,7 +35,7 @@ const generateEmailTemplate = (OTP) => {
         }
         .header {
           background-color: #cbfb45;
-          color: #ffffff;
+          color: #0000;
           text-align: center;
           padding: 20px;
         }
@@ -53,12 +52,13 @@ const generateEmailTemplate = (OTP) => {
           display: inline-block;
           margin: 20px 0;
           padding: 10px 20px;
-          background-color: #f0f0f0;
+          background-color: #3c3c3c;
           color: #cbfb45;
           font-size: 20px;
           font-weight: bold;
-          border-radius: 4px;
-          border: 1px solid #cbfb45;
+           border:5px solid #cbfb45;
+          border-radius: 10px;
+         
         }
         .footer {
           background-color: #f4f4f4;
@@ -100,20 +100,20 @@ const generateEmailTemplate = (OTP) => {
  */
 module.exports.sendOTP = async (email) => {
   const OTP = generateOTP();
-  console.log('Generated OTP:', OTP);
+  console.log("Generated OTP:", OTP);
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: "gmail",
     auth: {
-      user: 'uq0803@gmail.com', // Replace with your email
-      pass: 'gsfp ifld qnmc wwqd', // Replace with your app-specific password
+      user: "uq0803@gmail.com", // Replace with your email
+      pass: "gsfp ifld qnmc wwqd", // Replace with your app-specific password
     },
   });
 
   const mailOptions = {
     from: '"TechChaze" <uq0803@gmail.com>', // Replace with your sender email
     to: email,
-    subject: 'Your OTP for Your Email Verification at Ecommerce TechChaze',
+    subject: "Your OTP for Your Email Verification at Ecommerce TechChaze",
     text: `Your OTP is ${OTP}`,
     html: generateEmailTemplate(OTP), // Use the professional template
   };
@@ -122,7 +122,7 @@ module.exports.sendOTP = async (email) => {
     await transporter.sendMail(mailOptions);
     return OTP; // Return OTP for storage
   } catch (error) {
-    console.error('Error sending email:', error);
-    throw new Error('Failed to send OTP');
+    console.error("Error sending email:", error);
+    throw new Error("Failed to send OTP");
   }
 };
